@@ -1,24 +1,24 @@
 module.exports =
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "geek_on",
-    "host": "127.0.0.1",
+    "username": "b77bd0c4f1136b",
+    "password": "ff9fa238",
+    "database": "heroku_ac738e3be23d939",
+    "host": "us-cdbr-east-04.cleardb.com",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "username": "b77bd0c4f1136b",
+    "password": "ff9fa238",
+    "database": "heroku_ac738e3be23d939",
+    "host": "us-cdbr-east-04.cleardb.com",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "b77bd0c4f1136b",
+    "password": "ff9fa238",
+    "database": "heroku_ac738e3be23d939",
+    "host": "us-cdbr-east-04.cleardb.com",
     "dialect": "mysql"
   }
 }
