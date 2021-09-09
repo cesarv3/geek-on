@@ -62,7 +62,9 @@ const controlador= {
             categoria_id: req.body.categoria_id,
             price: req.body.price,
             estatus: req.body.estatus,
-            descripcion: req.body.descripcion},            
+            descripcion: req.body.descripcion,
+            descuento: req.body.descuento,
+            imagen: req.body.imagen},            
             {
             where: {
                 id: req.params.id

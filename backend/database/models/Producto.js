@@ -22,6 +22,12 @@ module.exports = (sequelize,dataTypes) => {
         },
         descripcion: {
             type: dataTypes.STRING
+        },
+        imagen: {
+            type: dataTypes.STRING
+        },
+        descuento: {
+            type: dataTypes.INTEGER
         }
     };
 
