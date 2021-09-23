@@ -7,9 +7,11 @@ app.use(bodyParser.json())
 //Requerimos las rutas
 const rutasProductos = require('./routes/productos');
 const rutasUsuarios = require('./routes/usuarios');
+const rutasCategorias = require('./routes/categorias');
 app.use(cors());
 app.use('/productos', rutasProductos);
 app.use('/usuarios',rutasUsuarios);
+app.use('/categorias',rutasCategorias);
 app.listen(3000, () => {
     console.log('Corriendo en el puerto 3000')
 });

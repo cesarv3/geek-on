@@ -1,5 +1,6 @@
 const db = require('../database/models');
 const OP = db.Sequelize.Op;
+const {validationResult} = require('express-validator');
 
 const controlador= {
     list: (req,res) => {
@@ -75,6 +76,40 @@ const controlador= {
                     response
                 });
             })
+    },
+    login: (req,res) => {
+        let resultadoValidacion = validationResult(req);
+        
+        if(resultadoValidacion.errors.length < 0){
+            db.Usuarios.findAll({
+                where: {
+                    email: req.body.email,
+                    password: req.body.password
+                }
+            })
+            .then(response => {
+                return res.status(200).json({
+                    "estatus": "OK",
+                    response
+                })     
+            })
+
+        } else {
+            console.log(resultadoValidacion.errors.length);
+            let obj = {
+                "estatus": "OK",
+                "errores": resultadoValidacion.errors
+            }
+            return {
+                return :res.status(200).json(obj)
+            }
+        }
+        
+    },
+    registro: (req,res) => {
+        console.log("Body en el backend");
+        console.log(req.body);
+        console.log(req.file);
     }
 };
 

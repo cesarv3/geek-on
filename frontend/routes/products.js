@@ -7,6 +7,11 @@ router.get('/:id',(req,res) => {
     res.render('productDetail.ejs');
 })
 
+router.get('/categoria/:id',(req,res) => {
+    res.render('productsCategoria.ejs');
+})
+
+
 
 
 

@@ -32,7 +32,7 @@ header {
     margin: 5px;
 }
 #bars{
-    background-color: #00db82;
+    background-color: #5a3e87;
     border-radius: 5px;
     padding: 5px;
 }
@@ -54,13 +54,13 @@ header {
     display: none;
 }
 .navbar-hamburguer a{
-    color: #00db82;
+    color: #5a3e87;
 }
 .navbar-hamburguer a:hover{
     color: white;
 }
 .li-hover:hover{
-    background-color: #00db82;
+    background-color: #5a3e87;
 }
 
 
@@ -85,7 +85,7 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
 }
 #form-search {
     border-radius: 5px;
-    border: solid #00db82 2px;
+    border: solid #5a3e87 2px;
     display: flex;
     height: 44px;
 }
@@ -100,7 +100,7 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
     width: 20%;
     border-radius: 3px;
     color: white;
-    background-color: #00db82;
+    background-color: #5a3e87;
     text-align: center;
 }
 .fa-search{
@@ -124,7 +124,7 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
     display: none;
 }
 #cart{
-    background-color: #00db82;
+    background-color: #5a3e87;
     border-radius: 5px;
     padding: 5px;
     height: 45px;
@@ -171,7 +171,16 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
 }
 /*FIN Modificacion navbar version escritorio*/
 
+#banner {
+    width: 100%;
+    
+}
 
+.banner-container {
+    display: relative;
+    background-color: #ebebeb;
+    
+}
 /*Modificacion banner*/
 #carrusel {
     float:left;
@@ -192,7 +201,7 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
     z-index:1;
     top:50%;
     margin-top:-9px;
-    color: #00db82;
+    color: #5a3e87;
 }
  
 #carrusel .right-arrow {
@@ -202,7 +211,7 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
     z-index:1;
     top:50%;
     margin-top:-9px;
-    color: #00db82;
+    color: #5a3e87;
 }
  
 .carrusel {
@@ -296,10 +305,12 @@ main section article {
 
 .caja  {
     position: relative;
-    color: white;
+    color: black;
     display: flex;
     flex-direction: column;
-    transition: 450ms;
+    border: 0;
+    margin:  15px;
+    padding: 30px 20px 0 0;
 }
 .caja p i{
     margin-right: 20px;
@@ -307,13 +318,7 @@ main section article {
     right: 0;
     
 }
-.caja:hover{
-    
-    color: black;
-    border: 0;
-    margin:  15px;
-    padding: 30px 20px 0 0;
-}
+
 
 .caja p {
 
@@ -428,7 +433,7 @@ input[type="checkbox"]:checked + .navbar{
 }
 
 p,h1,h2,h3,h4,a,input,button {
-    font-family: 'Signika Negative', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 a {
@@ -441,6 +446,49 @@ a {
 .footer-1200{
     display: none;
 }
+
+#categorias{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap;
+    margin: 16px;    
+    
+}
+
+.camisetas img{
+    float: left;
+    border-radius: 50%;
+}
+
+.pantalones img{
+    float: left;
+    border-radius: 50%;
+}
+.gorras img{
+    float: left;
+    border-radius: 50%;
+}
+
+.contenedor-separador{
+    position: relative;
+    text-align: center;
+    
+}
+
+.img-separador{
+    width: 100%;
+    max-height: 300px;
+}
+.texto-separador{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #FFF;
+    font-size: 5rem;
+    transform: translate(-50%, -50%);
+}
+
 
 @media (min-width: 576px) {
     /*Nuevo header*/
@@ -483,7 +531,7 @@ a {
     
     #user {
         display: block;
-        background-color: #00db82;
+        background-color: #5a3e87;
         color: white;
         border-radius: 5px;
         padding: 5px;
@@ -509,10 +557,6 @@ a {
 
     /*main*/
     
-    main section img {
-        max-width: 250px;
-        
-    }
 
     .caja-wrap {
         display: flex;
@@ -549,7 +593,7 @@ a {
     }
 
     .footer-1200  ul > li > a:hover{
-        color: #00db82;
+        color: #5a3e87;
     }
 
     .footer-1200 ul  {

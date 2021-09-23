@@ -8,6 +8,7 @@ const app = express();
 //Requerimos las rutas
 const rutasIndex = require('./routes/index');
 const rutasProductos = require('./routes/products');
+const rutasUsuarios = require('./routes/usuarios');
 const methodOverride = require('method-override');
 
 //Configuracion para realizar POST
@@ -22,6 +23,7 @@ app.use(express.static(publicPath));
 
 app.use('/', rutasIndex);
 app.use('/productos', rutasProductos);
+app.use('/usuarios', rutasUsuarios);
 
 
 app.listen(3030, () => {

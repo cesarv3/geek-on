@@ -76,6 +76,19 @@ const controlador= {
                 response
             });
         })
+    },
+    porCategoria: (req,res) => {
+        db.Productos.findAll({
+            where: {
+                categoria_id: req.params.id
+            },
+            include: [{association: "categorias"}]
+        })
+        .then(productos => res.status(200).json({
+            total: productos.length,
+            data: productos,
+            status: 200
+        }))
     }
 };
 

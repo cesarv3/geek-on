@@ -19,4 +19,7 @@ router.put('/:id', productosController.update);
 //Ruta para eliminar un producto
 router.delete('/:id', productosController.delete);
 
+//Ruta para obtener los productos por una categoria
+router.get('/categoria/:id',productosController.porCategoria);
+
 module.exports = router;

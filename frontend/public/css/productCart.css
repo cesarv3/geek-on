@@ -33,14 +33,14 @@ header {
 }
 #form-search {
     border-radius: 5px;
-    border: solid #00db82 2px;
+    border: solid #5a3e87 2px;
     display: flex;
     height: 44px;
 }
 #boton-search {
     border-radius: 3px;
     color: white;
-    background-color: #00db82;
+    background-color: #5a3e87;
     text-align: center;
 }
 .contenedor-login-fas{
@@ -59,12 +59,12 @@ header {
     display: none;
 }
 #bars{
-    background-color: #00db82;
+    background-color: #5a3e87;
     border-radius: 5px;
     padding: 5px;
 }
 #cart{
-    background-color: #00db82;
+    background-color: #5a3e87;
     border-radius: 5px;
     padding: 5px;
     height: 45px;
@@ -97,13 +97,13 @@ header {
 .navbar-hamburguer a{
     list-style: none;
     text-decoration: none;
-    color: #00db82;
+    color: #5a3e87;
 }
 .navbar-hamburguer a:hover{
     color: white;
 }
 .li-hover:hover{
-    background-color: #00db82;
+    background-color: #5a3e87;
 }
 
 input[type="checkbox"]:checked + .navbar-hamburguer{
@@ -112,7 +112,7 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
 /*Fin Nuevo Header*/
 
 p,h1,h2,h3,h4,a,input,button {
-    font-family: 'Signika Negative', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 .nav-bar {
@@ -128,7 +128,7 @@ p,h1,h2,h3,h4,a,input,button {
 }
 
 .nav-bar > a:hover,i:hover{
-    color: #00db82;
+    color: #5a3e87;
 }
 
 #logo {
@@ -164,7 +164,7 @@ p,h1,h2,h3,h4,a,input,button {
 }
 
 .resaltar{
-    color: #00db82;
+    color: #5a3e87;
 }
 
 .contenedor {
@@ -253,7 +253,7 @@ p,h1,h2,h3,h4,a,input,button {
     }
     #user {
         display: block;
-        background-color: #00db82;
+        background-color: #5a3e87;
         color: white;
         border-radius: 5px;
         padding: 5px;
@@ -283,7 +283,7 @@ p,h1,h2,h3,h4,a,input,button {
     }
 
     .footer-1200  ul > li > a:hover{
-        color: #00db82;
+        color: #5a3e87;
     }
 
     .footer-1200 ul  {

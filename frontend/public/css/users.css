@@ -35,7 +35,7 @@ header {
     margin: 5px;
 }
 #bars{
-    background-color: #00db82;
+    background-color: #5a3e87;
     border-radius: 5px;
     padding: 5px;
 }
@@ -57,13 +57,13 @@ header {
     display: none;
 }
 .navbar-hamburguer a{
-    color: #00db82;
+    color: #5a3e87;
 }
 .navbar-hamburguer a:hover{
     color: white;
 }
 .li-hover:hover{
-    background-color: #00db82;
+    background-color: #5a3e87;
 }
 
 
@@ -88,7 +88,7 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
 }
 #form-search {
     border-radius: 5px;
-    border: solid #00db82 2px;
+    border: solid #5a3e87 2px;
     display: flex;
     height: 44px;
 }
@@ -103,7 +103,7 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
     width: 20%;
     border-radius: 3px;
     color: white;
-    background-color: #00db82;
+    background-color: #5a3e87;
     text-align: center;
 }
 .fa-search{
@@ -127,7 +127,7 @@ input[type="checkbox"]:checked + .navbar-hamburguer{
     display: none;
 }
 #cart{
-    background-color: #00db82;
+    background-color: #5a3e87;
     border-radius: 5px;
     padding: 5px;
 }
@@ -162,7 +162,7 @@ a {
         width: 40%;
         padding: 1rem;
         
-        background-color: #00db82;
+        background-color: #5a3e87;
         color: white;
         text-align: center;
         
@@ -201,7 +201,7 @@ a {
         border: 0;
         border-radius: 4px;
         font-size: 24px;
-        font-family: 'Signika Negative', sans-serif;
+        font-family: 'Oswald', sans-serif;
     }
     .btn-productCart-edit:hover {
         background-color: chocolate;
@@ -210,7 +210,7 @@ a {
         background-color: red;
     }
     .btn-productCart:hover {
-        background-color: #00db82;
+        background-color: #5a3e87;
     }
     
 
@@ -258,7 +258,7 @@ a {
     
     #user {
         display: block;
-        background-color: #00db82;
+        background-color: #5a3e87;
         color: white;
         border-radius: 5px;
         padding: 5px;
@@ -316,7 +316,7 @@ a {
     }
 
     .footer-1200  ul > li > a:hover{
-        color: #00db82;
+        color: #5a3e87;
     }
 
     .footer-1200 ul  {
