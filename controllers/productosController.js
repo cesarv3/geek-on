@@ -1,5 +1,8 @@
 const db = require('../database/models');
 const OP = db.Sequelize.Op;
+const cloudinary = require('../utils/cloudinary');
+const {check} = require('express-validator')
+let validaciones = [];
 
 const controlador= {
     list: (req,res) => {
@@ -21,18 +24,40 @@ const controlador= {
             })
         })
     },
-    store: (req,res) => {                
+    store: (req,res,next) => {                
         //return res.json(req.body);
-        db.Productos.create(req.body)
-        .then(producto => {
-            return res.status(200).json({
-                data: producto,
-                status: 200
-            })
+          //const uploadedResponse = await cloudinary.uploader.upload
+        const imagen  = req.file;
+        const item = JSON.parse(req.body.data);
+        //console.log(req.body);        
+        //console.log(req.file);
+        cloudinary.uploader
+        .upload(req.file.path,{
+            resource_type: "image",
         })
+        .then(resp_cloudinary => {            
+            item.imagen = resp_cloudinary.secure_url;                     
+            db.Productos.create(item)
+            .then(producto => {                
+             return res.status(200).json({
+                 data: producto,
+                 status: 200
+             })
+         })            
+        })        
+        .catch( error => {
+            return error;
+        })
+        
+        
+         
     },
     delete: (req,res) => {
-        db.Productos.destroy({
+        console.log(req.params.id);
+        console.log(req.body[0]);
+        cloudinary.uploader.destroy(req.body[0])
+        .then(resp_cloudinary => {
+            db.Productos.destroy({
             where: {
                 id: req.params.id
             }
@@ -40,6 +65,8 @@ const controlador= {
         .then(response => {
             return res.json(response)
         })
+        })
+        
     },
     search: (req,res) => {
         db.Productos.findAll({
@@ -57,25 +84,32 @@ const controlador= {
         })
     },
     update: (req,res) => {
-        db.Productos.update(
-            {nombre: req.body.nombre,
-            categoria_id: req.body.categoria_id,
-            price: req.body.price,
-            estatus: req.body.estatus,
-            descripcion: req.body.descripcion,
-            descuento: req.body.descuento,
-            imagen: req.body.imagen},            
-            {
-            where: {
-                id: req.params.id
-            }
+        const item = JSON.parse(req.body.data);
+        const img = req.file.path;
+        console.log(item.image_old);
+        const nombreImg = item.image_old.substring(item.image_old.lastIndexOf('/') + 1);
+        let publicId = nombreImg.split('.');
+        cloudinary.uploader.destroy(publicId[0],function(result) { console.log(result) });
+        cloudinary.uploader.upload(img,{
+            resource_type: "image",
         })
-        .then(response => {
-            return res.status(200).json({
-                "estatus": "Ok",
-                response
-            });
+        .then(resp_cloudinary => {
+            item.imagen = resp_cloudinary.secure_url;
+            db.Productos.update(
+                item,            
+                {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(response => {
+                return res.status(200).json({
+                    "data": response,
+                    "estatus": 200,                    
+                });
+            })
         })
+       
     },
     porCategoria: (req,res) => {
         db.Productos.findAll({
