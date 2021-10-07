@@ -1,8 +1,9 @@
 const db = require('../database/models');
 const OP = db.Sequelize.Op;
 const cloudinary = require('../utils/cloudinary');
-const {check} = require('express-validator')
+const {validationResult} = require('express-validator')
 let validaciones = [];
+
 
 const controlador= {
     list: (req,res) => {
@@ -27,6 +28,10 @@ const controlador= {
     store: (req,res,next) => {                
         //return res.json(req.body);
           //const uploadedResponse = await cloudinary.uploader.upload
+          const errors = validationResult(req);
+          if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+          }
         const imagen  = req.file;
         const item = JSON.parse(req.body.data);
         //console.log(req.body);        

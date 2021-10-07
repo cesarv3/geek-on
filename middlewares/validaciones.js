@@ -8,5 +8,6 @@ module.exports = [
     check('email')
     .isEmail()
     .withMessage('Ingresar un email válido')
+    
 ]
 
