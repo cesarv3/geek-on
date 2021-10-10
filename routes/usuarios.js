@@ -1,10 +1,10 @@
 const express = require('express');
-const cloudinary = require("../utils/cloudinary");
-const upload = require("../utils/multer");
-
 const router = express.Router();
 const usuariosController = require('../controllers/usuariosController');
-const validaciones = require('../middlewares/validacionesLogin');
+const upload = require("../utils/multer");
+const {body} = require('express-validator');
+
+
 //Ruta para buscar con query string
 router.get('search', usuariosController.search);
 
@@ -27,8 +27,22 @@ router.delete('/:id', usuariosController.delete);
 router.get('/login');
 
 //console.log(validaciones);
-router.post('/login', validaciones,usuariosController.login);
+router.post('/login',
+body('email','Correo no puede estar vacio').notEmpty(),
+body('email',"Correo invalido").isEmail(),
+body('password',"Password no puede estar vacio").notEmpty(),
+usuariosController.login);
 
-router.post('/registro', upload.single('avatar'),usuariosController.registro);
+router.post('/registro', upload.single('avatar'),
+body('first_name', "Nombre no puede estar vacio").notEmpty(),
+body('first_name',"Nombre debe ser minimo 2 caracteres").isLength({ min: 2 }),
+body('last_name',"Apelido no puede estar vacio"),
+body('first_name',"Apellido debe ser minimo 2 caracteres").isLength({ min: 2 }),
+body('email',"Email no puede estar vacio").notEmpty(),
+body('email',"Email invalido").isEmail(),
+body('password','Password no puede estar vacio').notEmpty(),
+body('password','Password debe contener al menos 6 caracteres').isLength({min: 6}),
+body('password',"Password invalido").isStrongPassword(),
+usuariosController.registro);
 
 module.exports = router;

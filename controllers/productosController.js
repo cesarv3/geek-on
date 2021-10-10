@@ -32,7 +32,7 @@ const controlador= {
           if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
           }
-        const imagen  = req.file;
+        //const imagen  = req.file;
         const item = JSON.parse(req.body.data);
         //console.log(req.body);        
         //console.log(req.file);
