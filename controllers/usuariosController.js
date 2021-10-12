@@ -8,6 +8,12 @@ const saltRounds = 10;
 const controlador = {
   list: (req, res) => {
     db.Usuarios.findAll().then((usuarios) => {
+        usuarios.forEach(element => {
+            element.dataValues.detail = "http://localhost:4000/usuarios/"+element.id
+            element.dataValues.password = "";
+            element.dataValues.rol_id = "";
+            console.log(element.dataValues);
+        });
       return res.status(200).json({
         total: usuarios.length,
         data: usuarios,
@@ -17,6 +23,8 @@ const controlador = {
   },
   show: (req, res) => {
     db.Usuarios.findByPk(req.params.id).then((usuario) => {
+        usuario.password = "";
+        usuario.rol_id = "";
       return res.status(200).json({
         data: usuario,
         status: 200,

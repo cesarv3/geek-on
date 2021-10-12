@@ -3,6 +3,8 @@ const router = express.Router();
 const productosController = require('../controllers/productosController');
 const upload = require("../utils/multer");
 const {body, validationResult} = require('express-validator');
+//Ruta para obtener el ultimo producto agregado (El id mas grande)
+router.get('/last', productosController.ultimo);
 //Ruta para buscar con query string
 router.get('/search', productosController.search);
 //Listado de productos
@@ -41,5 +43,8 @@ router.delete('/:id', productosController.delete);
 
 //Ruta para obtener los productos por una categoria
 router.get('/categoria/:id',productosController.porCategoria);
+
+
+
 
 module.exports = router;

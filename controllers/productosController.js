@@ -9,9 +9,39 @@ const controlador= {
     list: (req,res) => {
         db.Productos.findAll()
         .then((productos) => {
+            const groupByElement = productos => {
+                const hash = Object.create(null),
+                result = [];
+                productos.forEach(el => {
+                   if (!hash[el.categoria_id]) {
+                      hash[el.categoria_id] = [];
+                      result.push(hash[el.categoria_id]);
+                   };
+                   hash[el.categoria_id].push(el);
+                });
+                return result;
+             };
+             const agrupados = groupByElement(productos)
+            //console.log(agrupados);
+            let cuenta_categorias = {
+                
+            };
+            agrupados.forEach(grupo => {                
+                console.log(grupo[0].dataValues.categoria_id);
+                // console.log(grupo.length);
+                // if(grupo[0].dataValues.categoria_id){
+                //     cuenta_categorias.camisetas = 
+                // }
+                cuenta_categorias[grupo[0].dataValues.categoria_id] = grupo.length;
+            })
+            productos.forEach(el => {
+                console.log(el);
+                el.dataValues.detail = "http://localhost:4000/productos/"+el.dataValues.id
+            })
             return res.status(200).json({
                 total: productos.length,
                 data: productos,
+                countByCategory: cuenta_categorias,
                 status: 200
             })
         })        
@@ -128,6 +158,25 @@ const controlador= {
             data: productos,
             status: 200
         }))
+    },
+    ultimo: (req,res) => {
+        db.Productos.findOne({
+            
+            order: [['id','DESC']]
+        })
+        // db.Productos.findOne({
+            
+        //     where: {
+        //         id: 5
+        //     }
+            
+        // })
+        .then(prod => {
+            res.status(200).json({
+                data: prod,
+                status: 200
+            })
+        })
     }
 };
 

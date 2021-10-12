@@ -12,7 +12,7 @@ app.use(cors());
 app.use('/productos', rutasProductos);
 app.use('/usuarios',rutasUsuarios);
 app.use('/categorias',rutasCategorias);
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Corriendo en el puerto 3000')
+app.listen(process.env.PORT || 4000, () => {
+    console.log('Corriendo en el puerto 4000')
 });
 
