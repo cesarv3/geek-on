@@ -36,7 +36,7 @@ const controlador= {
             })
             productos.forEach(el => {
                 console.log(el);
-                el.dataValues.detail = "http://localhost:4000/productos/"+el.dataValues.id
+                el.dataValues.detail = "https://geek-on.herokuapp.com/productos/"+el.dataValues.id
             })
             return res.status(200).json({
                 total: productos.length,

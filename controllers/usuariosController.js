@@ -9,7 +9,7 @@ const controlador = {
   list: (req, res) => {
     db.Usuarios.findAll().then((usuarios) => {
         usuarios.forEach(element => {
-            element.dataValues.detail = "http://localhost:4000/usuarios/"+element.id
+            element.dataValues.detail = "https://geek-on.herokuapp.com/usuarios/"+element.id
             element.dataValues.password = "";
             element.dataValues.rol_id = "";
             console.log(element.dataValues);
