@@ -163,6 +163,11 @@ const controlador = {
           resource_type: "image",
         })
         .then((resp_cloudinary) => {
+          usuario.nombre = req.body.data.nombre;
+    usuario.aPaterno = req.body.data.apellido;
+      usuario.aMaterno = req.body.data.materno;
+      usuario.rol_id = req.body.data.rol;
+      usuario.email = req.body.data.email;
           usuario.avatar = resp_cloudinary.secure_url;
           db.Usuarios.create(usuario);
         })
