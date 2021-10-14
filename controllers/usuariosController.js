@@ -168,7 +168,7 @@ const controlador = {
         })
         .then((user) => {
           return res.status(200).json({
-            data: user,
+            data: usuario,
             status: 200,
           });
         })
