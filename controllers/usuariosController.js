@@ -147,10 +147,10 @@ const controlador = {
     usuario.aMaterno = req.body.data.a_materno;
     usuario.rol_id = req.body.data.rol;
     usuario.email = req.body.data.email;
-    usuario.password = req.body.data.password;
+    usuario.password = req.body.data.contra;
     const salt = bcrypt.genSaltSync(saltRounds); 
     console.log(usuario.password);   
-    const hash = bcrypt.hashSync("abc123!!", salt);
+    const hash = bcrypt.hashSync(usuario.password, salt);
     usuario.password = hash;
 
     const errors = validationResult(req);
