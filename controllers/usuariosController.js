@@ -150,6 +150,7 @@ const controlador = {
     const salt = bcrypt.genSaltSync(saltRounds);
     let pass = req.body.data.password;
     console.log(pass);
+    console.log(req.body.data.password);
     const hash = bcrypt.hashSync(req.body.data.password, salt);
     usuario.password = hash;
 
