@@ -16,8 +16,8 @@ router.get('/:id',productosController.show);
 //Ruta para crear un producto
 router.post('/crear', upload.single('image'), 
  body('nombre',"No puede estar vacio").notEmpty(),
- body('nombre',"Nombre debe ser mayor a 5 caracteres").isLength({ min: 5 }),
- //body('price',"El precio no puede estar vacio").notEmpty(),
+ //body('nombre',"Nombre debe ser mayor a 5 caracteres").isLength({ min: 5 }),
+ body('price',"El precio no puede estar vacio").notEmpty(),
  //body('price',"Debe ser un numero positivo").isFloat({min: 1}),
  //body('discount',"El descuento no puede estar vacio").notEmpty(),
  //body('discount',"El descuento puede estar entre 5% y 25%").isFloat({min:5, max:25}),
