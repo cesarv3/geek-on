@@ -148,6 +148,8 @@ const controlador = {
     usuario.rol_id = req.body.rol;
     usuario.email = req.body.email;
     const salt = bcrypt.genSaltSync(saltRounds);
+    let pass = req.body.password;
+    console.log(pass);
     const hash = bcrypt.hashSync(req.body.password, salt);
     usuario.password = hash;
 
