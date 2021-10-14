@@ -142,15 +142,15 @@ const controlador = {
   registro: (req, res) => {
     let usuario = {};
     console.log(req.body);
-    usuario.nombre = req.body.first_name;
-    usuario.aPaterno = req.body.last_name;
-    usuario.aMaterno = req.body.a_materno;
-    usuario.rol_id = req.body.rol;
-    usuario.email = req.body.email;
+    usuario.nombre = req.body.data.first_name;
+    usuario.aPaterno = req.body.data.last_name;
+    usuario.aMaterno = req.body.data.a_materno;
+    usuario.rol_id = req.body.data.rol;
+    usuario.email = req.body.data.email;
     const salt = bcrypt.genSaltSync(saltRounds);
-    let pass = req.body.password;
+    let pass = req.body.data.password;
     console.log(pass);
-    const hash = bcrypt.hashSync(req.body.password, salt);
+    const hash = bcrypt.hashSync(req.body.data.password, salt);
     usuario.password = hash;
 
     const errors = validationResult(req);
