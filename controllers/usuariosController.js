@@ -95,10 +95,10 @@ const controlador = {
               email: req.body.email              
           }
       })
-      .then(response => {
+      .then(response => {        
           let status ="";
           console.log(req.body.password);
-          console.log(response.password);
+          console.log(response);
           if(bcrypt.compareSync(req.body.password,response.password)){
             status = "validas"
           } else {
@@ -142,9 +142,9 @@ const controlador = {
   registro: (req, res) => {
     let usuario = {};
     console.log(req.body.data);
-    usuario.nombre = req.body.data.first_name;
-    usuario.aPaterno = req.body.data.last_name;
-    usuario.aMaterno = req.body.data.a_materno;
+    usuario.nombre = req.body.data.nombre;
+    usuario.aPaterno = req.body.data.apellido;
+    usuario.aMaterno = req.body.data.materno;
     usuario.rol_id = req.body.data.rol;
     usuario.email = req.body.data.email;
     usuario.password = req.body.data.contra;
