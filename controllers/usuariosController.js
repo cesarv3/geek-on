@@ -164,15 +164,15 @@ const controlador = {
         .then((resp_cloudinary) => {
           usuario.nombre = "Cesar";
           usuario.avatar = resp_cloudinary.secure_url;
-          db.Usuarios.create(usuario);
+          db.Usuarios.create(usuario)
+          .then((user) => {
+            return res.status(200).json({
+              data: usuario,
+              status: 200,
+            });
+          })
         })
-        .then((user) => {
-          return res.status(200).json({
-
-            data: usuario,
-            status: 200,
-          });
-        })
+        
         .catch((error) => {
           return error;
         });
