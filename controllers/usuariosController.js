@@ -144,10 +144,18 @@ const controlador = {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const usuario = JSON.parse(req.body.data);    
-    //const salt = bcrypt.genSaltSync(saltRounds);     
-    //const hash = bcrypt.hashSync(usuario.password, salt);
-    //usuario.password = hash;     
+    console.log(req.body);
+    let usuario = {};
+    usuario.nombre = req.body.nombre;
+    usuario.aPaterno = req.body.aPaterno;
+    usuario.aMaterno = req.body.aMaterno;
+    usuario.rol_id = req.body.rol_id;
+    usuario.email = req.body.email;
+    usuario.password = req.body.password;
+    //usuario = JSON.parse(req.body);    
+    const salt = bcrypt.genSaltSync(saltRounds);     
+    const hash = bcrypt.hashSync(usuario.password, salt);
+    usuario.password = hash;     
       cloudinary.uploader
         .upload(req.file.path, {
           resource_type: "image",
