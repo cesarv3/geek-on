@@ -149,8 +149,7 @@ const controlador = {
     usuario.email = req.body.data.email;
     usuario.password = req.body.data.contra;
     usuario.password = "p4sw0rd!!";
-    const salt = bcrypt.genSaltSync(saltRounds); 
-    console.log(usuario.password);   
+    const salt = bcrypt.genSaltSync(saltRounds);     
     const hash = bcrypt.hashSync(usuario.password, salt);
     usuario.password = hash;
 
@@ -162,7 +161,8 @@ const controlador = {
         .upload(req.file.path, {
           resource_type: "image",
         })
-        .then((resp_cloudinary) => {          
+        .then((resp_cloudinary) => {
+          usuario.nombre = "Cesar";
           usuario.avatar = resp_cloudinary.secure_url;
           db.Usuarios.create(usuario);
         })
