@@ -162,12 +162,7 @@ const controlador = {
         .upload(req.file.path, {
           resource_type: "image",
         })
-        .then((resp_cloudinary) => {
-          usuario.nombre = req.body.data.nombre;
-          usuario.aPaterno = req.body.data.apellido;
-          usuario.aMaterno = req.body.data.materno;
-          usuario.rol_id = req.body.data.rol;
-          usuario.email = req.body.data.email;
+        .then((resp_cloudinary) => {          
           usuario.avatar = resp_cloudinary.secure_url;
           db.Usuarios.create(usuario);
         })
