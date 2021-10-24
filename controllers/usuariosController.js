@@ -95,10 +95,10 @@ const controlador = {
               email: req.body.email              
           }
       })
-      .then(response => {
+      .then(response => {        
           let status ="";
           console.log(req.body.password);
-          console.log(response.password);
+          console.log(response);
           if(bcrypt.compareSync(req.body.password,response.password)){
             status = "validas"
           } else {
@@ -141,14 +141,17 @@ const controlador = {
   },
   registro: (req, res) => {
     let usuario = {};
-    console.log(req.body);
+    console.log(req.body.data);
     usuario.nombre = req.body.data.nombre;
-    usuario.aPaterno = req.body.apellido;
-    usuario.aMaterno = req.body.a_materno;
-    usuario.rol_id = req.body.rol;
-    usuario.email = req.body.email;
-    const salt = bcrypt.genSaltSync(saltRounds);
-    const hash = bcrypt.hashSync(req.body.password, salt);
+    usuario.aPaterno = req.body.data.apellido;
+    usuario.aMaterno = req.body.data.materno;
+    usuario.rol_id = req.body.data.rol;
+    usuario.email = req.body.data.email;
+    usuario.password = req.body.data.contra;
+    usuario.password = "p4sw0rd!!";
+    const salt = bcrypt.genSaltSync(saltRounds); 
+    console.log(usuario.password);   
+    const hash = bcrypt.hashSync(usuario.password, salt);
     usuario.password = hash;
 
     const errors = validationResult(req);
@@ -160,12 +163,17 @@ const controlador = {
           resource_type: "image",
         })
         .then((resp_cloudinary) => {
+          usuario.nombre = req.body.data.nombre;
+    usuario.aPaterno = req.body.data.apellido;
+      usuario.aMaterno = req.body.data.materno;
+      usuario.rol_id = req.body.data.rol;
+      usuario.email = req.body.data.email;
           usuario.avatar = resp_cloudinary.secure_url;
           db.Usuarios.create(usuario);
         })
         .then((user) => {
           return res.status(200).json({
-            data: user,
+            data: usuario,
             status: 200,
           });
         })
