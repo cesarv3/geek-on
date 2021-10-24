@@ -141,10 +141,10 @@ const controlador = {
   },
   registro: (req, res) => {
     let usuario = {};
-    console.log(req.body.data);
-    usuario.nombre = req.body.data.nombre;
-    usuario.aPaterno = req.body.data.apellido;
-    usuario.aMaterno = req.body.data.materno;
+    
+    usuario.nombre = req.body.nombre;
+    usuario.aPaterno = req.body.apellido;
+    usuario.aMaterno = req.body.materno;
     usuario.rol_id = req.body.data.rol;
     usuario.email = req.body.data.email;
     usuario.password = req.body.data.contra;
@@ -164,15 +164,16 @@ const controlador = {
         })
         .then((resp_cloudinary) => {
           usuario.nombre = req.body.data.nombre;
-    usuario.aPaterno = req.body.data.apellido;
-      usuario.aMaterno = req.body.data.materno;
-      usuario.rol_id = req.body.data.rol;
-      usuario.email = req.body.data.email;
+          usuario.aPaterno = req.body.data.apellido;
+          usuario.aMaterno = req.body.data.materno;
+          usuario.rol_id = req.body.data.rol;
+          usuario.email = req.body.data.email;
           usuario.avatar = resp_cloudinary.secure_url;
           db.Usuarios.create(usuario);
         })
         .then((user) => {
           return res.status(200).json({
+
             data: usuario,
             status: 200,
           });
