@@ -142,8 +142,8 @@ const controlador = {
   registro: (req, res) => {
     let usuario = {};
     console.log(req.body);
-    usuario.nombre = req.body.first_name;
-    usuario.aPaterno = req.body.last_name;
+    usuario.nombre = req.body.data.nombre;
+    usuario.aPaterno = req.body.apellido;
     usuario.aMaterno = req.body.a_materno;
     usuario.rol_id = req.body.rol;
     usuario.email = req.body.email;
