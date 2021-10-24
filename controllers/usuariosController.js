@@ -140,29 +140,20 @@ const controlador = {
     // }
   },
   registro: (req, res) => {
-    
-    let usuario = JSON.parse(req.body.data);
-    //usuario.nombre = req.body.nombre;
-    //usuario.aPaterno = req.body.apellido;
-    //usuario.aMaterno = req.body.materno;
-    //usuario.rol_id = req.body.data.rol;
-    //usuario.email = req.body.data.email;
-    //usuario.password = req.body.data.contra;
-    //usuario.password = "p4sw0rd!!";
-    const salt = bcrypt.genSaltSync(saltRounds);     
-    const hash = bcrypt.hashSync(usuario.password, salt);
-    usuario.password = hash;
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
-    } else {
+    }
+    const usuario = JSON.parse(req.body.data);    
+    //const salt = bcrypt.genSaltSync(saltRounds);     
+    //const hash = bcrypt.hashSync(usuario.password, salt);
+    //usuario.password = hash;     
       cloudinary.uploader
         .upload(req.file.path, {
           resource_type: "image",
         })
         .then((resp_cloudinary) => {
-          usuario.nombre = "Cesar";
+          //usuario.nombre = "Cesar";
           usuario.avatar = resp_cloudinary.secure_url;
           db.Usuarios.create(usuario)
           .then((user) => {
@@ -176,7 +167,7 @@ const controlador = {
         .catch((error) => {
           return error;
         });
-    }
+    
   },
 };
 
