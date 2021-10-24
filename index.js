@@ -8,7 +8,9 @@ app.use(bodyParser.json())
 const rutasProductos = require('./routes/productos');
 const rutasUsuarios = require('./routes/usuarios');
 const rutasCategorias = require('./routes/categorias');
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}));
 app.use('/productos', rutasProductos);
 app.use('/usuarios',rutasUsuarios);
 app.use('/categorias',rutasCategorias);
