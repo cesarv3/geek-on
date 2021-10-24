@@ -140,15 +140,15 @@ const controlador = {
     // }
   },
   registro: (req, res) => {
-    let usuario = {};
     
-    usuario.nombre = req.body.nombre;
-    usuario.aPaterno = req.body.apellido;
-    usuario.aMaterno = req.body.materno;
-    usuario.rol_id = req.body.data.rol;
-    usuario.email = req.body.data.email;
-    usuario.password = req.body.data.contra;
-    usuario.password = "p4sw0rd!!";
+    let usuario = JSON.parse(req.body.data);
+    //usuario.nombre = req.body.nombre;
+    //usuario.aPaterno = req.body.apellido;
+    //usuario.aMaterno = req.body.materno;
+    //usuario.rol_id = req.body.data.rol;
+    //usuario.email = req.body.data.email;
+    //usuario.password = req.body.data.contra;
+    //usuario.password = "p4sw0rd!!";
     const salt = bcrypt.genSaltSync(saltRounds);     
     const hash = bcrypt.hashSync(usuario.password, salt);
     usuario.password = hash;
@@ -167,7 +167,7 @@ const controlador = {
           db.Usuarios.create(usuario)
           .then((user) => {
             return res.status(200).json({
-              data: usuario,
+              data: user,
               status: 200,
             });
           })
